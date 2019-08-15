@@ -15,8 +15,7 @@ for i in range(0,13):
 	deck.append(Card("♣",rank[i], i+1 if i<10 else 10))
 	deck.append(Card("♠",rank[i], i+1 if i<10 else 10))
 
-for card in deck:
-	print(card.rank, card.suit, card.num_value)
+
 
 	
 
