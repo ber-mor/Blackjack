@@ -1,3 +1,5 @@
+import random
+
 class Deck:
 	def __init__(self, num_of_decks):
 		self.deck = []
@@ -15,9 +17,16 @@ class Deck:
 				for ra in range(13):
 					self.deck.append(Card(suit[su], rank[ra], ra+1 if ra<10 else 10))
 
-	# def shuffle(self):
+	def shuffle(self):
+		random.shuffle(self.deck)
 
-	# def take_hand(self): 	
+	def take_hand(self):
+		card1 = self.deck.pop()
+		card2 = self.deck.pop()
+		self.discarded_deck.append(card1)
+		self.discarded_deck.append(card2)
+		hand = Hand(card1, card2)
+		return hand
 
 class Card:
 	def __init__(self, suit, rank, num_value):
