@@ -20,12 +20,13 @@ class Deck:
 	def shuffle(self):
 		random.shuffle(self.deck)
 
+	def take_card(self):
+		card = self.deck.pop()
+		self.discarded_deck.append(card)
+		return card
+
 	def take_hand(self):
-		card1 = self.deck.pop()
-		card2 = self.deck.pop()
-		self.discarded_deck.append(card1)
-		self.discarded_deck.append(card2)
-		hand = Hand(card1, card2)
+		hand = Hand(self.take_card(), self.take_card())
 		return hand
 
 class Card:
