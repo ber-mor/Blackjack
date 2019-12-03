@@ -1,8 +1,7 @@
 import random
 
-class Deck:
-	def __init__(self, num_of_decks):
-		self.deck = []
+class Deck(list):
+	def __init__(self, num_of_decks = 1):
 		self.discarded_deck = []
 		self.num_of_decks = num_of_decks
 		self.init_deck()
@@ -15,13 +14,14 @@ class Deck:
 		for num in range(self.num_of_decks):
 			for su in range(4):
 				for ra in range(13):
-					self.deck.append(Card(suit[su], rank[ra], ra+1 if ra<10 else 10))
+					self.append(Card(suit[su], rank[ra], ra+1 if ra<10 else 10))
 
 	def shuffle(self):
-		random.shuffle(self.deck)
+		random.shuffle(self)
+		return self
 
 	def take_card(self):
-		card = self.deck.pop()
+		card = self.pop()
 		self.discarded_deck.append(card)
 		return card
 
@@ -44,11 +44,10 @@ class Hand:
 		self.hand.append(card)
 		self.total += card.num_value
 
-deck = Deck(2)
-deck.shuffle()
-
-for card in deck.deck:
+for card in Deck():
 	print(card.rank, card.suit, card.num_value)
+
+
 
 
 
