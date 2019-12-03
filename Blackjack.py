@@ -37,19 +37,18 @@ class Card:
 
 class Hand:
 	def __init__(self, card1, card2):
-		self.hand = []
-		self.hand.append(card1)
-		self.hand.append(card2)
+		self.hand = [card1, card2]
 		self.total = card1.num_value + card2.num_value
 
-	def hit(self, card):
+	def hit(self, card): 
 		self.hand.append(card)
 		self.total += card.num_value
 
-for card in Deck(2).deck:
+deck = Deck(2)
+deck.shuffle()
+
+for card in deck.deck:
 	print(card.rank, card.suit, card.num_value)
-
-
 
 
 
